@@ -37,7 +37,8 @@ body *{
 }
 
 #container{
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     margin: auto;
     padding: 0 24px;
 }
@@ -82,12 +83,17 @@ body *{
     left: 0;
     transform: translateY(-50%);
     z-index: 1;
-    pointer-events: none;
+    animation: slide-back 0.2s;
+    cursor: pointer;
+    transition: outline 0.3s;
 }
 
 .light #switch button{
-    right: 0;
-    left: initial;
+    animation: slide-in 0.2s forwards;
+}
+
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
 }
 
 #switch span{
@@ -171,9 +177,24 @@ footer{
     body{
         background-position: top center;
         background-size: cover;
-        overflow: hidden;
+        overflow-x: hidden;
     }
-    #container{
-        width: 360px;
+}
+
+@keyframes slide-in{
+    from {
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back{
+    from {
+        left: 50%;
+    }
+    to {
+        left: 0;
     }
 }
